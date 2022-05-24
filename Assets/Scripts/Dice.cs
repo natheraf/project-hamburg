@@ -5,28 +5,27 @@ using UnityEngine;
 public class Dice : MonoBehaviour
 {
     [SerializeField] SceneController sceneController;
-
-    private Sprite[] facesOfDice;
+    [SerializeField] Sprite[] facesOfDice;
     private int _id;
     public int id {
         get { return _id; }
     }
 
-    public void SetFace(int id, Sprite image) {
-        Debug.Log("Generated with id: " + id);
-        _id = id;
-        GetComponent<SpriteRenderer>().sprite = image;
+    public void SetRandomFace() {
+        _id = Random.Range(0, facesOfDice.Length);
+        Debug.Log("Generated with id: " + _id);
+        GetComponent<SpriteRenderer>().sprite = facesOfDice[_id];
     }
 
     // On mouse down, roll the dice
     public void OnMouseUp() {
-        SetFace(Random.Range(0, facesOfDice.Length), facesOfDice[id]);
+        SetRandomFace();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        facesOfDice = sceneController.getFacesOfDice();
+        
     }
 
     // Update is called once per frame

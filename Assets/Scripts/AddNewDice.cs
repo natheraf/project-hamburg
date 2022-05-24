@@ -6,7 +6,7 @@ public class AddNewDice : MonoBehaviour
 {
     [SerializeField] SceneController sceneController;
 
-    public void OnMouseDown()
+    public void OnMouseUp()
     {
         sceneController.addNewDice();
     }
